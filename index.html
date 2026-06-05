@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Background Job Backlog Briefs | Background job backlog checklist</title>
+  <meta name="description" content="Paste public-safe queue backlog notes and generate a customer-ready recovery brief, retry/dead-letter warnings, validation checklist, owner handoff, and payload privacy flags.">
+  <meta name="robots" content="index,follow">
+  <meta property="og:title" content="Background Job Backlog Briefs">
+  <meta property="og:description" content="Turn background job backlog notes into a customer-ready recovery brief.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://ert93333-ops.github.io/background-job-backlog-briefs/">
+  <meta name="twitter:card" content="summary">
+  <link rel="canonical" href="https://ert93333-ops.github.io/background-job-backlog-briefs/">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#workflow">Skip to workflow</a>
+  <header class="site-header">
+    <div class="shell header-inner">
+      <a class="brand" href="./" aria-label="Background Job Backlog Briefs home">Background Job Backlog Briefs</a>
+      <nav class="nav" aria-label="Primary">
+        <a href="#workflow">Workflow</a>
+        <a href="#pricing">Pricing</a>
+        <a href="background-job-backlog-checklist.html">Checklist</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="shell hero-grid">
+        <div class="hero-copy">
+          <h1>Turn background job backlog notes into a customer-ready recovery brief.</h1>
+          <p class="hero-subtitle">Paste public-safe queue/backlog notes or scrubbed job excerpts and get queue scope, retry/dead-letter warnings, customer impact, safe recovery checklist, validation path, owner handoff, and payload/privacy flags before a human retries or updates customers.</p>
+          <div class="hero-actions">
+            <a class="button primary" href="#workflow">Generate backlog recovery brief</a>
+            <a class="button secondary" href="background-job-backlog-checklist.html">View background job backlog checklist</a>
+          </div>
+        </div>
+        <aside class="brief-preview" aria-label="Brief preview">
+          <p class="brief-label">Checks before retry</p>
+          <strong>Framework, queue, job class, backlog age, retry state, dead-letter set, customer impact, cause, recovery, validation, owner, and payload hygiene.</strong>
+          <p>No queue connection. No retry execution. No job deletion. No credentials.</p>
+        </aside>
+      </div>
+    </section>
+
+    <section id="workflow" class="section">
+      <div class="shell section-grid">
+        <div>
+          <h2>Turn vague queue incidents into precise recovery briefs.</h2>
+          <p>Use public-safe notes only. Do not paste queue URLs, job payloads, tokens, customer IDs, user emails, raw logs, credentials, PII, or production data.</p>
+          <div class="input-grid">
+            <label>Queue/backlog notes or scrubbed job excerpt<textarea id="backlog-notes" placeholder="Example: Sidekiq production critical queue backed up after provider 429s."></textarea></label>
+            <label>Framework, queue, job, worker, backend, priority, or environment scope<textarea id="scope-notes" class="short-textarea" placeholder="Example: Sidekiq, critical queue, BillingSyncJob, billing-workers, Redis backend, production."></textarea></label>
+            <label>Backlog count, oldest age, throughput, latency, failure rate, retry count, or dead-letter state<textarea id="volume-notes" class="short-textarea" placeholder="Example: 2,480 queued, oldest 74 minutes, failure rate 12%, 43 jobs in Dead set."></textarea></label>
+            <label>Retry, backoff, jitter, attempts, timeout, visibility, expiration, delay, or ETA context<textarea id="retry-notes" class="short-textarea" placeholder="Example: exponential backoff with jitter, 10 attempts, 30 second timeout, idempotency key."></textarea></label>
+            <label>Customer impact, workflow, SLA, billing, email, import, export, webhook, reporting, or urgency context<textarea id="impact-notes" class="short-textarea" placeholder="Example: invoice exports delayed for finance admins; support update due by 10:30 UTC."></textarea></label>
+            <label>External dependency, rate limit, database, memory, worker crash, deploy, scheduler, or payload-size cause<textarea id="cause-notes" class="short-textarea" placeholder="Example: provider rate limit plus deploy-related worker concurrency increase caused retry storm."></textarea></label>
+            <label>Recovery action and safe replay/retry plan<textarea id="recovery-notes" class="short-textarea" placeholder="Example: pause noncritical jobs, drain critical queue, retry selected Dead set jobs after quota confirmation."></textarea></label>
+            <label>Validation, monitor, queue depth, error-rate, dead set, failed_jobs, dashboard, or next-update path<textarea id="validation-notes" class="short-textarea" placeholder="Example: Sidekiq Web queue depth, Dead set, provider 429 count, export smoke test."></textarea></label>
+            <label>Owner, reviewer, escalation, comms owner, or next update<textarea id="owner-notes" class="short-textarea" placeholder="Example: backend on-call owns; SRE approves retry batch; support sends update by 10:30 UTC."></textarea></label>
+            <label>Tone / privacy notes<textarea id="privacy-notes" class="short-textarea" placeholder="Example: no payloads, tokens, queue URLs, raw logs, customer IDs, user emails, or credentials."></textarea></label>
+          </div>
+          <div class="form-actions">
+            <button class="button secondary" type="button" id="sample-button">Load sample backlog</button>
+            <button class="button primary" type="button" id="generate-button">Generate backlog recovery brief</button>
+          </div>
+          <p class="copy-status" id="workflow-error" role="status" aria-live="polite"></p>
+        </div>
+        <aside class="output-panel" id="output-panel" aria-live="polite">
+          <div class="status-pill"><span class="status-dot"></span><span id="output-status">Waiting for backlog notes</span></div>
+          <div id="brief-output" class="brief-output"><p>Paste public-safe background job queue context to generate a customer-ready recovery brief.</p></div>
+          <button class="button small" type="button" id="copy-brief" disabled>Copy brief</button>
+          <p class="copy-status" id="copy-status" role="status" aria-live="polite"></p>
+        </aside>
+      </div>
+    </section>
+
+    <section id="pricing" class="section">
+      <div class="shell">
+        <h2>Pay only if this reduces risky queue recovery reviews.</h2>
+        <div class="pricing-grid">
+          <article class="price-card">
+            <h3>Starter</h3>
+            <p class="price">$19/month</p>
+            <p>For founders and small engineering teams reviewing ad hoc background job incidents.</p>
+            <button class="button full plan-button" type="button" data-plan="Starter">Request Starter access</button>
+          </article>
+          <article class="price-card">
+            <h3>Team</h3>
+            <p class="price">$79/month</p>
+            <p>For backend, platform, SRE, DevOps, and support engineering teams standardizing queue incident review.</p>
+            <button class="button full plan-button" type="button" data-plan="Team">Request Team access</button>
+          </article>
+        </div>
+        <form class="handoff-panel" id="intent-form">
+          <h3>Purchase-intent fallback</h3>
+          <p>Stored locally in this browser. The public issue handoff excludes private email by default.</p>
+          <div class="input-grid compact">
+            <label>Email<input id="intent-email" type="email" placeholder="you@example.com"></label>
+            <label>Role/team<input id="intent-role" type="text" placeholder="Backend, platform, SRE, support engineering..."></label>
+            <label>Queue/backlog review volume<input id="backlog-volume" type="text" placeholder="Example: 6 queue incidents per month"></label>
+            <label>Current queue incident review process<input id="current-process" type="text" placeholder="Example: Sidekiq Web screenshot plus incident notes"></label>
+            <label>Plan interest<select id="plan-interest"><option>Starter</option><option>Team</option></select></label>
+            <label>Willingness to pay<input id="willingness" type="text" placeholder="$19/month, $79/month, paid pilot..."></label>
+          </div>
+          <button class="button primary" type="submit">Request early access</button>
+          <p class="copy-status" id="intent-status" role="status" aria-live="polite"></p>
+          <div id="remote-intent" hidden>
+            <a class="button secondary" id="remote-intent-link" target="_blank" rel="noreferrer">Open public request</a>
+            <button class="button ghost" type="button" id="copy-remote-intent">Copy request details</button>
+            <p class="copy-status" id="remote-copy-status" role="status" aria-live="polite"></p>
+          </div>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="shell footer-grid">
+      <p>Browser-local MVP. No queue connection, retry execution, replay execution, job delete/flush, worker scaling, credentials, queue URLs, payloads, raw logs, customer IDs, backend, or external database.</p>
+      <a href="background-job-backlog-checklist.html">Background job backlog checklist</a>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>

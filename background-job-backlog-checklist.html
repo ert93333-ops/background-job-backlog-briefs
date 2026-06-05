@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Background job backlog checklist | Background Job Backlog Briefs</title>
+  <meta name="description" content="A practical background job backlog checklist for queue scope, backlog age, retry state, dead-letter risk, customer impact, recovery, validation, owner, and payload hygiene.">
+  <meta name="robots" content="index,follow">
+  <meta property="og:title" content="Background job backlog checklist">
+  <meta property="og:description" content="Checklist for reviewing background job backlog, retry, dead-letter, and customer recovery risk before retrying jobs.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://ert93333-ops.github.io/background-job-backlog-briefs/background-job-backlog-checklist.html">
+  <link rel="canonical" href="https://ert93333-ops.github.io/background-job-backlog-briefs/background-job-backlog-checklist.html">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="shell header-inner">
+      <a class="brand" href="./">Background Job Backlog Briefs</a>
+      <nav class="nav" aria-label="Primary">
+        <a href="./#workflow">Workflow</a>
+        <a href="./#pricing">Pricing</a>
+      </nav>
+    </div>
+  </header>
+  <main>
+    <article class="section">
+      <div class="shell article-body">
+        <p class="brief-label">Checklist</p>
+        <h1>Background job backlog checklist</h1>
+        <p>Use this before approving retry, replay, drain, delete, flush, or customer updates. Keep queue credentials, queue URLs, job payloads, tokens, customer IDs, user emails, raw logs, PII, and production data out of public tools.</p>
+
+        <h2>1. State queue and backlog scope</h2>
+        <ul>
+          <li>Framework, queue name, job class/name, worker pool, backend, priority, and environment</li>
+          <li>Backlog count, oldest job age, throughput, latency, failure rate, retry count, and dead-letter or failed-job state</li>
+          <li>Customer-facing workflow affected: billing, email, import, export, webhook, reporting, support, or SLA</li>
+        </ul>
+
+        <h2>2. Check retry and cause context</h2>
+        <ul>
+          <li>Retry policy, backoff, jitter, attempts, timeout, visibility timeout, expiration, delay, or ETA semantics</li>
+          <li>External dependency, rate limit, database, memory, worker crash, deploy, scheduler, or payload-size cause</li>
+          <li>Idempotency, duplicate side effects, and stale-job handling before any replay</li>
+        </ul>
+
+        <h2>3. Define recovery and validation</h2>
+        <ul>
+          <li>Pause, drain, scale workers, retry selected jobs, replay safely, drop stale jobs, throttle, or contact provider</li>
+          <li>Queue depth, error-rate, Dead set, failed_jobs, dashboard, alert, smoke test, and next-update path</li>
+          <li>Named owner, reviewer, escalation path, comms owner, and update time</li>
+        </ul>
+
+        <h2>4. Avoid unsafe wording and private data</h2>
+        <ul>
+          <li>Avoid retry-all, flush/delete, silent discard, no-impact, or blame wording unless explicitly reviewed and approved.</li>
+          <li>Do not paste payloads, tokens, user emails, customer IDs, queue URLs, credentials, raw logs, PII, or production data.</li>
+          <li>Document customer impact honestly, even when recovery is already underway.</li>
+        </ul>
+
+        <p><a class="button primary" href="./?utm_source=seo&utm_medium=organic&utm_campaign=background_job_backlog_template#workflow">Generate a backlog recovery brief</a></p>
+      </div>
+    </article>
+  </main>
+  <footer class="site-footer">
+    <div class="shell footer-grid">
+      <p>Browser-local queue incident review. No queue connection, retry execution, job deletion, worker scaling, credentials, payloads, raw logs, or production data.</p>
+      <a href="./">Background Job Backlog Briefs</a>
+    </div>
+  </footer>
+  <script src="app.js"></script>
+</body>
+</html>

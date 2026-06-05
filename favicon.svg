@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Background Job Backlog Briefs">
+  <rect width="64" height="64" rx="12" fill="#102a43"/>
+  <path d="M14 18h36M14 32h28M14 46h20" fill="none" stroke="#bfdbfe" stroke-width="6" stroke-linecap="round"/>
+  <circle cx="50" cy="32" r="7" fill="#fbbf24"/>
+  <path d="M45 47l5 5 10-12" fill="none" stroke="#5eead4" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M10 18c0-4 3-7 7-7h30c4 0 7 3 7 7" fill="none" stroke="#fb7185" stroke-width="3" stroke-linecap="round"/>
+</svg>

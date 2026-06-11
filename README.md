@@ -6,6 +6,7 @@ Static browser-local MVP for turning public-safe background job queue backlog no
 
 - Landing: `https://ert93333-ops.github.io/background-job-backlog-briefs/`
 - Checklist: `https://ert93333-ops.github.io/background-job-backlog-briefs/background-job-backlog-checklist.html`
+- Paid pilot: `https://ert93333-ops.github.io/background-job-backlog-briefs/paid-pilot.html`
 - Public marketing checklist: `https://gist.github.com/ert93333-ops/0cb4b7ac08b6b20b87daed3b3c64904d`
 
 ## Scope
